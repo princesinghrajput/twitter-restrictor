@@ -4,7 +4,7 @@
 
 ## Overview
 
-The **Twitter Usage Restrictor** is a Chrome extension designed to help users manage their Twitter usage by restricting the number of tweets they can send in a day. With customizable limits and a sleek user interface, this extension encourages healthier social media habits.
+The **Twitter Usage Restrictor** is a Chrome extension designed to help users manage their Twitter usage by restricting the number of tweets they can interact with in a day. With customizable limits and a sleek user interface, this extension encourages healthier social media habits.
 
 ## Features
 
