@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Twitter Usage Restrictor",
+  "version": "1.0",
+  "description": "Restricts Twitter usage to 20 tweets per day",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://twitter.com/*",
+    "https://x.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://twitter.com/*",
+        "https://x.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ]
+}
