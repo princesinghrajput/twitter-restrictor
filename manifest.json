@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Twitter Usage Restrictor",
   "version": "1.0",
-  "description": "Restricts Twitter usage to 20 tweets per day",
+  "description": "Restricts Twitter usage with customizable limits",
   "permissions": [
     "storage",
     "tabs"
@@ -22,5 +22,6 @@
       ],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "options_page": "options.html"
 }
