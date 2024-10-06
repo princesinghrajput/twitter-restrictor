@@ -1,4 +1,4 @@
-console.log("Content script loaded");
+//console.log("Content script loaded");
 
 let tweetObserver;
 let lastProcessedTweet = null;
@@ -17,7 +17,7 @@ function debounce(func, wait) {
 }
 
 function checkRestriction(isRestricted, tweetCount, tweetLimit, restrictionDuration) {
-  console.log("Checking restriction", { isRestricted, tweetCount, tweetLimit, restrictionDuration });
+  //console.log("Checking restriction", { isRestricted, tweetCount, tweetLimit, restrictionDuration });
   if (isRestricted) {
     restrictAccess(tweetLimit, restrictionDuration);
   } else {
@@ -26,7 +26,7 @@ function checkRestriction(isRestricted, tweetCount, tweetLimit, restrictionDurat
 }
 
 function findTweetContainerAndObserve() {
-  console.log("Attempting to find tweet container");
+  //console.log("Attempting to find tweet container");
   const possibleSelectors = [
     'div[aria-label="Timeline: Your Home Timeline"]',
     'div[data-testid="primaryColumn"]',
@@ -38,7 +38,7 @@ function findTweetContainerAndObserve() {
   for (const selector of possibleSelectors) {
     tweetContainer = document.querySelector(selector);
     if (tweetContainer) {
-      console.log(`Tweet container found with selector: ${selector}`);
+      //console.log(`Tweet container found with selector: ${selector}`);
       break;
     }
   }
@@ -46,13 +46,13 @@ function findTweetContainerAndObserve() {
   if (tweetContainer) {
     observeTweets(tweetContainer);
   } else {
-    console.log("Tweet container not found, retrying in 1 second");
+    //console.log("Tweet container not found, retrying in 1 second");
     setTimeout(findTweetContainerAndObserve, 1000);
   }
 }
 
 function observeTweets(tweetContainer) {
-  console.log("Observing tweets");
+  //console.log("Observing tweets");
 
   const debouncedProcessTweet = debounce(processTweet, 300);
 
@@ -81,9 +81,8 @@ function processTweet(tweetElement) {
   isProcessing = true;
   lastProcessedTweet = tweetElement;
 
-  console.log("New tweet detected");
+  // Removed debugging statements
   chrome.runtime.sendMessage({ action: "checkTweetCount" }, (response) => {
-    console.log("Received response for new tweet:", response);
     if (response && response.isRestricted) {
       restrictAccess(response.tweetLimit, response.restrictionDuration);
     }
